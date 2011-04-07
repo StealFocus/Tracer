@@ -30,5 +30,8 @@ Thumbs.db
 
 /Build/
 /Source/StealFocus.MSBuild.Setup/Temp/
+/Source/StealFocus.Tracer.Tests/*.config
 /Source/AssemblyInfoCommon.cs
+!/Dependencies/SQLite-1.0.66.0-setup.exe
 !/Library/*.pdb
+!/Source/StealFocus.Tracer.Tests/App.config

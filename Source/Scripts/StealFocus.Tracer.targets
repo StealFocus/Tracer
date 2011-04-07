@@ -18,11 +18,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!--<Environments Include="Development">
+    <Environments Include="Development">
       <IsIncludedInDesktopBuild>true</IsIncludedInDesktopBuild>
       <ConfigurationDictionaryFilePath>..\Artefacts\Configuration\Dictionaries\Development.xml</ConfigurationDictionaryFilePath>
     </Environments>
-    <Environments Include="Production">
+    <!--<Environments Include="Production">
       <IsIncludedInDesktopBuild>false</IsIncludedInDesktopBuild>
       <ConfigurationDictionaryFilePath>..\Artefacts\Configuration\Dictionaries\Production.xml</ConfigurationDictionaryFilePath>
     </Environments>

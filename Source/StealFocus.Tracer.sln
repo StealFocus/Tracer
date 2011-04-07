@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		AssemblyInfoCommon.cs = AssemblyInfoCommon.cs
 		FxCopCustomDictionary.xml = FxCopCustomDictionary.xml
 		Local.testsettings = Local.testsettings
+		nhibernate-configuration.xsd = nhibernate-configuration.xsd
+		nhibernate-mapping.xsd = nhibernate-mapping.xsd
 		Notes.txt = Notes.txt
 		Settings.StyleCop = Settings.StyleCop
 		StealFocus.Tracer.License.rtf = StealFocus.Tracer.License.rtf
@@ -40,8 +42,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Artefacts", "Artefacts", "{D4998CF8-56F6-4EF6-BBBD-4EC736747CCE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{28FF6554-7CB0-4904-B39E-8FB530622751}"
+	ProjectSection(SolutionItems) = preProject
+		Artefacts\Configuration\Templates\nhibernate.config = Artefacts\Configuration\Templates\nhibernate.config
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dictionaries", "Dictionaries", "{BFEC248E-BDA5-4EFF-AE36-54AC50C72973}"
+	ProjectSection(SolutionItems) = preProject
+		Artefacts\Configuration\Dictionaries\Development.xml = Artefacts\Configuration\Dictionaries\Development.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{F6144F85-5CDC-4EDC-9FE9-B014810CAF05}"
 EndProject

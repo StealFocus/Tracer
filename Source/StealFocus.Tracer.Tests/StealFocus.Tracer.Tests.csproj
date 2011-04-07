@@ -48,10 +48,24 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\Library\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NHibernate">
+      <HintPath>..\..\Library\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\..\Library\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\System.Data.SQLite.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -63,7 +77,8 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="DummyTest.cs" />
+    <Compile Include="CallContextTests.cs" />
+    <Compile Include="Data\NH\NHibernateSessionFactoryTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,6 +91,14 @@
     <None Include="..\StealFocus.Tracer.StrongNamePublicKey.snk">
       <Link>StealFocus.Tracer.StrongNamePublicKey.snk</Link>
     </None>
+    <None Include="App.config" />
+    <None Include="nhibernate.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StealFocus.Tracer\StealFocus.Tracer.csproj">
+      <Project>{786FF51E-524F-4706-A1E5-9D1B6338888F}</Project>
+      <Name>StealFocus.Tracer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Condition=" '$(SolutionDir)'=='*Undefined*' ">

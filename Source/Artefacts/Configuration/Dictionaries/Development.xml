@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TextFileRegexReplaceDictionary 
+  xmlns="http://schemas.StealFocus.co.uk/MSBuild/TextFileRegexReplaceDictionary/v1.0">
+  <!-- Miscellaneous -->
+  <Entry expectedMatches="1" regularExpression="##EnvironmentName##">
+    <ReplacementValue>Development</ReplacementValue>
+  </Entry>
+</TextFileRegexReplaceDictionary>

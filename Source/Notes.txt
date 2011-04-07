@@ -1,0 +1,7 @@
+http://aabs.wordpress.com/2007/12/31/the-ambient-context-design-pattern-in-net/
+http://stackoverflow.com/questions/273301/callcontext-vs-threadstatic
+http://www.hanselman.com/blog/ATaleOfTwoTechniquesTheThreadStaticAttributeAndSystemWebHttpContextCurrentItems.aspx
+http://piers7.blogspot.com/2005/11/threadstatic-callcontext-and_02.html
+http://forum.springframework.net/showthread.php?t=572
+
+http://devlicio.us/blogs/krzysztof_kozmic/archive/2009/08/14/testing-with-nhibernate-and-sqlite.aspx

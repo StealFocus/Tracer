@@ -17,3 +17,5 @@
 // "In Project Suppression File". 
 // You do not need to add suppressions to this file manually. 
 
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1020:AvoidNamespacesWithFewTypes", Scope = "namespace", Target = "StealFocus.Tracer.Tests")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1020:AvoidNamespacesWithFewTypes", Scope = "namespace", Target = "StealFocus.Tracer.Tests.Data.NH")]
