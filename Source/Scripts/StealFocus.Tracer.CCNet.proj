@@ -48,51 +48,51 @@
     <Message
       Importance="high"
       Text="Build information:" />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'BranchName' = '$(BranchName)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'BuildLabel' = '$(BuildLabel)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'BuildLabelNumber' = '$(BuildLabelNumber)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'DropLocation' = '$(DropLocation)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'DropLocationForBuild' = '$(DropLocationForBuild)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'IsAllConfigurationsBuild' = '$(IsAllConfigurationsBuild)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'IsCommandLineBuild' = '$(IsCommandLineBuild)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'IsDesktopBuild' = '$(IsDesktopBuild)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'IsDocumentationBuild' = '$(IsDocumentationBuild)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'IsInitialiseEnvironmentBuild' = '$(IsInitialiseEnvironmentBuild)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'IsPackagedBuild' = '$(IsPackagedBuild)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'MajorVersionNumber' = '$(MajorVersionNumber)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'MinorVersionNumber' = '$(MinorVersionNumber)'." />
-    <Message 
-      Importance="high" 
+    <Message
+      Importance="high"
       Text="Using 'VersionNumber' = '$(VersionNumber)'." />
     <MSBuild
       Projects="StealFocus.Tracer.Build.proj"
-      Properties="BranchName=$(BranchName);BuildLabel=$(BuildLabel);BuildLabelNumber=$(BuildLabelNumber);DropLocationForBuild=$(DropLocationForBuild);IsAllConfigurationsBuild=$(IsAllConfigurationsBuild);IsCommandLineBuild=$(IsCommandLineBuild);IsDesktopBuild=$(IsDesktopBuild);IsDocumentationBuild=$(IsDocumentationBuild);IsInitialiseEnvironmentBuild=$(IsInitialiseEnvironmentBuild);IsPackagedBuild=$(IsPackagedBuild);VersionNumber=$(VersionNumber)" />
+      Properties="MaxBuildTimeInMinutes=20;BranchName=$(BranchName);BuildLabel=$(BuildLabel);BuildLabelNumber=$(BuildLabelNumber);DropLocationForBuild=$(DropLocationForBuild);IsAllConfigurationsBuild=$(IsAllConfigurationsBuild);IsCommandLineBuild=$(IsCommandLineBuild);IsDesktopBuild=$(IsDesktopBuild);IsDocumentationBuild=$(IsDocumentationBuild);IsInitialiseEnvironmentBuild=$(IsInitialiseEnvironmentBuild);IsPackagedBuild=$(IsPackagedBuild);VersionNumber=$(VersionNumber)" />
   </Target>
 
 </Project>

@@ -1,4 +1,3 @@
-
 *_i.c
 *_p.c
 *.aps
@@ -20,7 +19,7 @@
 *.user
 *.vspscc
 *.vssscc
-[Bd]in
+[Bd]in/
 [Db]ebug*/
 [Rr]elease*/
 [Tt]est[Rr]esult*
@@ -28,10 +27,10 @@ _ReSharper*/
 obj/
 Thumbs.db
 
-/Build/
-/Source/StealFocus.MSBuild.Setup/Temp/
-/Source/StealFocus.Tracer.Tests/*.config
-/Source/AssemblyInfoCommon.cs
-!/Dependencies/SQLite-1.0.66.0-setup.exe
-!/Library/*.pdb
-!/Source/StealFocus.Tracer.Tests/App.config
+*.cscf
+*.sdf
+StealFocus.Build.state
+!Source/.nuget/NuGet.exe
+
+AssemblyInfoCommon.g.cs
+!Dependencies/

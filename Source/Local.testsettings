@@ -2,7 +2,13 @@
 <TestSettings name="Local" id="a4e49d80-8800-49a2-9fa3-ffe1b4dbaf20" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Description>These are default test settings for a local test run.</Description>
   <Deployment>
+    <DeploymentItem filename="..\Library\NHibernate.ByteCode.Castle.dll" />
+    <DeploymentItem filename="..\Library\Castle.Core.dll" />
+    <DeploymentItem filename="..\Library\NHibernate.dll" />
     <DeploymentItem filename="StealFocus.Tracer.Tests\nhibernate.config" />
+    <DeploymentItem filename="..\Library\sqlite3.dll" />
+    <DeploymentItem filename="..\Library\Iesi.Collections.dll" />
+    <DeploymentItem filename="..\Library\System.Data.SQLite.dll" />
   </Deployment>
   <Execution>
     <TestTypeSpecific>

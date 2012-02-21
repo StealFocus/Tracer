@@ -7,14 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StealFocus.Tracer.Tests", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{31958DAD-EEF6-4D67-B441-3F506C0B3A62}"
 	ProjectSection(SolutionItems) = preProject
-		AssemblyInfoCommon.cs = AssemblyInfoCommon.cs
 		FxCopCustomDictionary.xml = FxCopCustomDictionary.xml
 		Local.testsettings = Local.testsettings
 		nhibernate-configuration.xsd = nhibernate-configuration.xsd
 		nhibernate-mapping.xsd = nhibernate-mapping.xsd
 		Notes.txt = Notes.txt
 		Settings.StyleCop = Settings.StyleCop
-		StealFocus.Tracer.License.rtf = StealFocus.Tracer.License.rtf
 		StealFocus.Tracer.ruleset = StealFocus.Tracer.ruleset
 		StealFocus.Tracer.StrongNameKeyPair.snk = StealFocus.Tracer.StrongNameKeyPair.snk
 		StealFocus.Tracer.StrongNamePublicKey.snk = StealFocus.Tracer.StrongNamePublicKey.snk
@@ -27,35 +25,24 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{1822581E-2CD9-40EB-8069-71E53D8C4DA9}"
 	ProjectSection(SolutionItems) = preProject
 		Scripts\StealFocus.Tracer.Build.proj = Scripts\StealFocus.Tracer.Build.proj
+		Scripts\StealFocus.Tracer.Build.Project.Assembly.targets = Scripts\StealFocus.Tracer.Build.Project.Assembly.targets
+		Scripts\StealFocus.Tracer.Build.Project.CSharp.targets = Scripts\StealFocus.Tracer.Build.Project.CSharp.targets
+		Scripts\StealFocus.Tracer.Build.Project.targets = Scripts\StealFocus.Tracer.Build.Project.targets
+		Scripts\StealFocus.Tracer.Build.Project.VisualBasic.targets = Scripts\StealFocus.Tracer.Build.Project.VisualBasic.targets
 		Scripts\StealFocus.Tracer.CCNet.proj = Scripts\StealFocus.Tracer.CCNet.proj
-		Scripts\StealFocus.Tracer.Project.Assembly.targets = Scripts\StealFocus.Tracer.Project.Assembly.targets
-		Scripts\StealFocus.Tracer.Project.CSharp.targets = Scripts\StealFocus.Tracer.Project.CSharp.targets
-		Scripts\StealFocus.Tracer.Project.targets = Scripts\StealFocus.Tracer.Project.targets
-		Scripts\StealFocus.Tracer.Project.VisualBasic.targets = Scripts\StealFocus.Tracer.Project.VisualBasic.targets
-		Scripts\StealFocus.Tracer.Project.WiX.targets = Scripts\StealFocus.Tracer.Project.WiX.targets
-		Scripts\StealFocus.Tracer.shfbproj = Scripts\StealFocus.Tracer.shfbproj
 		Scripts\StealFocus.Tracer.targets = Scripts\StealFocus.Tracer.targets
-		Scripts\XmlFileCheckerConfiguration-AssemblyProjectFile-CSharp.xml = Scripts\XmlFileCheckerConfiguration-AssemblyProjectFile-CSharp.xml
-		Scripts\XmlFileCheckerConfiguration-SilverlightProjectFile-CSharp.xml = Scripts\XmlFileCheckerConfiguration-SilverlightProjectFile-CSharp.xml
 	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Artefacts", "Artefacts", "{D4998CF8-56F6-4EF6-BBBD-4EC736747CCE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{28FF6554-7CB0-4904-B39E-8FB530622751}"
-	ProjectSection(SolutionItems) = preProject
-		Artefacts\Configuration\Templates\nhibernate.config = Artefacts\Configuration\Templates\nhibernate.config
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dictionaries", "Dictionaries", "{BFEC248E-BDA5-4EFF-AE36-54AC50C72973}"
-	ProjectSection(SolutionItems) = preProject
-		Artefacts\Configuration\Dictionaries\Development.xml = Artefacts\Configuration\Dictionaries\Development.xml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{F6144F85-5CDC-4EDC-9FE9-B014810CAF05}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommandFiles", "CommandFiles", "{25D5F5B7-AAC3-410E-865A-A7D03A558F90}"
 	ProjectSection(SolutionItems) = preProject
 		CommandFiles\StealFocus.Tracer.Build.cmd = CommandFiles\StealFocus.Tracer.Build.cmd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BD249182-A6B6-40FE-8760-4FA20F53E111}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
 Global
@@ -81,8 +68,5 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{550FC319-7D51-4812-BDAD-5E66D96EADB6} = {C5EC0BC5-1E0D-4CFE-A084-AD9357BEB0A3}
-		{F6144F85-5CDC-4EDC-9FE9-B014810CAF05} = {D4998CF8-56F6-4EF6-BBBD-4EC736747CCE}
-		{BFEC248E-BDA5-4EFF-AE36-54AC50C72973} = {F6144F85-5CDC-4EDC-9FE9-B014810CAF05}
-		{28FF6554-7CB0-4904-B39E-8FB530622751} = {F6144F85-5CDC-4EDC-9FE9-B014810CAF05}
 	EndGlobalSection
 EndGlobal

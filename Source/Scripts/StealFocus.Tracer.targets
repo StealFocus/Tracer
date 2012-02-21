@@ -1,71 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!-- 
-    IMPORTANT - you must import these targets for the build scripts to function.
-  -->
-  <Import Project="$(MSBuildExtensionsPath)\StealFocus\Kata\v1.2\StealFocus.Kata.targets" />
+  <!-- IMPORTANT - you must import these targets for the build scripts to function. -->
+  <Import Project="..\packages\StealFocus.Build.1.0.20221.0\Scripts\StealFocus.Build.tasks" />
 
   <PropertyGroup>
     <CompanyName>StealFocus</CompanyName>
     <Culture>en-GB</Culture>
-    <FrameworkVersion>4.0</FrameworkVersion>
     <ProductName>Tracer</ProductName>
-    <RuntimeVersion>4.0</RuntimeVersion>
     <StrongNamePublicKey>002400000480000094000000060200000024000052534131000400000100010057ece96de55a5feaa85abf92d8c9dbb24cca851ea6198a0622fa757e683395b4459b1a26de1c90bceb47c5819dddbfaa90d51cfbada849e839e002a9384d0cc8bafaf91570bda460b2df43dc3416c277b64f5f2241a9541c28dfba8fc4c0612e150156e37d1025bc9dc172546df694e6e107cd3167dbb98d78806dfc90718f99</StrongNamePublicKey>
     <StrongNamePublicKeyToken>ccd98e804f85d4c9</StrongNamePublicKeyToken>
-    <ToolsVersion>4.0</ToolsVersion>
+    <StyleCopVersion>4.7</StyleCopVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Environments Include="Development">
-      <IsIncludedInDesktopBuild>true</IsIncludedInDesktopBuild>
-      <ConfigurationDictionaryFilePath>..\Artefacts\Configuration\Dictionaries\Development.xml</ConfigurationDictionaryFilePath>
-    </Environments>
-    <!--<Environments Include="Production">
-      <IsIncludedInDesktopBuild>false</IsIncludedInDesktopBuild>
-      <ConfigurationDictionaryFilePath>..\Artefacts\Configuration\Dictionaries\Production.xml</ConfigurationDictionaryFilePath>
-    </Environments>
-    <Environments Include="SystemTest">
-      <IsIncludedInDesktopBuild>false</IsIncludedInDesktopBuild>
-      <ConfigurationDictionaryFilePath>..\Artefacts\Configuration\Dictionaries\SystemTest.xml</ConfigurationDictionaryFilePath>
-    </Environments>
-    <Environments Include="UserAcceptanceTest">
-      <IsIncludedInDesktopBuild>false</IsIncludedInDesktopBuild>
-      <ConfigurationDictionaryFilePath>..\Artefacts\Configuration\Dictionaries\UserAcceptanceTest.xml</ConfigurationDictionaryFilePath>
-    </Environments>-->
-  </ItemGroup>
-
-  <ItemGroup>
-    <!--<WebApplicationProject Include="StealFocus.Tracer.Web.UI">
-      <AppPoolUsername></AppPoolUsername>
-      <AppPoolUserDomain></AppPoolUserDomain>
-      <AppPoolPassword></AppPoolPassword>
-      <AppPoolLocalGroupName>IIS_WPG</AppPoolLocalGroupName>
-      --><!-- AuthFlags = NTLM, Anonymous, Basic, Digest --><!--
-      <AuthFlags>NTLM</AuthFlags>
-      --><!-- IdentityType = LocalSystem | LocalService | NetworkService | SpecifiedUserAccount --><!--
-      <IdentityType>NetworkService</IdentityType>
-      <ProjectDir>..\StealFocus.Tracer.Web.UI</ProjectDir>
-      <WebSiteName>Default Web Site</WebSiteName>
-    </WebApplicationProject>-->
-  </ItemGroup>
-  
-  <ItemGroup>
-    <!-- 
-      Add "WebApplicationScriptMap" items as required. These will be applied to each "WebApplicationProject" listed 
-      above.
-    -->
-    <!--<WebApplicationScriptMap Include=".svc">
-      <MapToAspNet>true</MapToAspNet>
-      <Verbs>GET,POST,HEAD,DEBUG</Verbs>
-      <VerifyFileExists>false</VerifyFileExists>
-    </WebApplicationScriptMap>
-    <WebApplicationScriptMap Include=".mvc">
-      <MapToAspNet>true</MapToAspNet>
-      <Verbs>GET,POST,HEAD,DEBUG</Verbs>
-      <VerifyFileExists>false</VerifyFileExists>
-    </WebApplicationScriptMap>-->
-  </ItemGroup>
 
 </Project>

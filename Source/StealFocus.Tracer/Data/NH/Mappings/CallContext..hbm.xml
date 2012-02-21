@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="StealFocus.Tracer" assembly="StealFocus.Tracer">
-  <class name="CallContext">
-    <id name="Id" type="int">
-      <generator class="identity" />
-    </id>
-    <property name="Info" type="string" length="50" />
-  </class>
-</hibernate-mapping>
