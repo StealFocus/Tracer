@@ -3,7 +3,7 @@ var chat;
 
 $(function () {
     // Created proxy
-    chat = $.connection.myChat;
+    chat = $.connection.traceHub;
 
     // Assign a function to be called by the server
     chat.addMessage = onAddMessage;
@@ -22,5 +22,7 @@ function onAddMessage(message) {
 
 function onBroadcast() {
     // Call the chat method on the server
-    chat.send($('#message').val());
+    var message = $('#message').val();
+    var traceEvent = jQuery.parseJSON('{"Message":"' + message + '"}');
+    chat.send(traceEvent);
 }

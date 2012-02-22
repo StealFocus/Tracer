@@ -13,6 +13,8 @@
 
   <Target Name="AfterBuildCustom">
     <!-- Enter your custom steps here. -->
+    <Delete Files="$(ProjectDir)\bin\System.Data.SQLite.dll" />
+    <Delete Files="$(ProjectDir)\bin\System.Data.SQLite.xml" />
   </Target>
 
   <Target Name="BeforeRebuildCustom">

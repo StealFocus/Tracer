@@ -17,3 +17,6 @@
 // "In Project Suppression File". 
 // You do not need to add suppressions to this file manually. 
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Scope = "member", Target = "StealFocus.Tracer.Web.UI.MvcApplication.#Application_Start()")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Scope = "member", Target = "StealFocus.Tracer.Web.UI.TraceHub.#SendMessage(System.String)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Scope = "member", Target = "StealFocus.Tracer.Web.UI.TraceHub.#Send(System.String)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Scope = "member", Target = "StealFocus.Tracer.Web.UI.TraceHub.#Send(StealFocus.Tracer.Model.TraceEvent)")]
