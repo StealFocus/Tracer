@@ -45,6 +45,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BD2491
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StealFocus.Tracer.Web.UI", "StealFocus.Tracer.Web.UI\StealFocus.Tracer.Web.UI.csproj", "{0E7F5D9F-A56C-452B-8459-090E69B36DB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StealFocus.Tracer.Web.UI.Tests", "StealFocus.Tracer.Web.UI.Tests\StealFocus.Tracer.Web.UI.Tests.csproj", "{C1D167AE-30E1-4684-9BDE-793C45991935}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = StealFocus.Tracer.vsmdi
@@ -62,11 +66,20 @@ Global
 		{550FC319-7D51-4812-BDAD-5E66D96EADB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{550FC319-7D51-4812-BDAD-5E66D96EADB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{550FC319-7D51-4812-BDAD-5E66D96EADB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E7F5D9F-A56C-452B-8459-090E69B36DB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E7F5D9F-A56C-452B-8459-090E69B36DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E7F5D9F-A56C-452B-8459-090E69B36DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E7F5D9F-A56C-452B-8459-090E69B36DB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D167AE-30E1-4684-9BDE-793C45991935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D167AE-30E1-4684-9BDE-793C45991935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D167AE-30E1-4684-9BDE-793C45991935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D167AE-30E1-4684-9BDE-793C45991935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{550FC319-7D51-4812-BDAD-5E66D96EADB6} = {C5EC0BC5-1E0D-4CFE-A084-AD9357BEB0A3}
+		{C1D167AE-30E1-4684-9BDE-793C45991935} = {C5EC0BC5-1E0D-4CFE-A084-AD9357BEB0A3}
 	EndGlobalSection
 EndGlobal

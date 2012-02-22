@@ -61,14 +61,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--<WebProject Include="$(SolutionDirectoryPath)\StealFocus.Tracer.Web.UI\StealFocus.Tracer.Web.UI.csproj">
+    <WebProject Include="$(SolutionDirectoryPath)\StealFocus.Tracer.Web.UI\StealFocus.Tracer.Web.UI.csproj">
       <Package>true</Package>
       <PackageAsSingleFile>false</PackageAsSingleFile>
       <PackageTempDir>$(SystemDrive)\StlFcsTrcr\StealFocus.Tracer.Web.UI</PackageTempDir>
       <IncludeIisSettings>true</IncludeIisSettings>
       <IncludeAppPool>true</IncludeAppPool>
       <DeployEncryptKey>Password1</DeployEncryptKey>
-    </WebProject>-->
+    </WebProject>
   </ItemGroup>
 
   <ItemGroup>
@@ -104,40 +104,32 @@
 
   <ItemGroup>
     <!-- Add "WebApplicationPool" items as required. These will create AppPools in IIS with the provided settings. -->
-    <!--<WebApplicationPool Include="StealFocus.Tracer.Web.UI">
-      -->
-    <!-- IdentityType = LocalSystem | LocalService | NetworkService | SpecificUser -->
-    <!--
+    <WebApplicationPool Include="StealFocus.Tracer.Web.UI">
+      <!-- IdentityType = LocalSystem | LocalService | NetworkService | SpecificUser -->
       <IdentityType>NetworkService</IdentityType>
-      -->
-    <!-- Enter the user credentials below when choosing 'SpecificUser' as the 'IdentityType'. -->
-    <!--
+      <!-- Enter the user credentials below when choosing 'SpecificUser' as the 'IdentityType'. -->
       <Domain></Domain>
       <Username></Username>
       <Password></Password>
-      -->
-    <!-- ManagedRuntimeVersion = v2.0 | v4.0 -->
-    <!--
+      <!-- ManagedRuntimeVersion = v2.0 | v4.0 -->
       <ManagedRuntimeVersion>v4.0</ManagedRuntimeVersion>
-      -->
-    <!-- PipelineMode = Integrated | Classic -->
-    <!--
+      <!-- PipelineMode = Integrated | Classic -->
       <PipelineMode>Integrated</PipelineMode>
       <Enable32BitAppOnWin64>false</Enable32BitAppOnWin64>
-    </WebApplicationPool>-->
+    </WebApplicationPool>
   </ItemGroup>
 
   <ItemGroup>
     <!-- Add "WebSite" items as required. These will create web sites in IIS with the provided settings. -->
-    <!--<WebSite Include="$(SolutionDirectoryPath)\WebSite">
-      <Name>StealFocusWebSite</Name>
-      <Port>999</Port>
-      <WebApplicationPoolName>StealFocusWebSite</WebApplicationPoolName>
-      <AnonymousAuthentication>false</AnonymousAuthentication>
+    <WebSite Include="$(SolutionDirectoryPath)\StealFocus.Tracer.Web.UI">
+      <Name>StealFocusTracer</Name>
+      <Port>8000</Port>
+      <WebApplicationPoolName>StealFocus.Tracer.Web.UI</WebApplicationPoolName>
+      <AnonymousAuthentication>true</AnonymousAuthentication>
       <BasicAuthentication>false</BasicAuthentication>
       <DigestAuthentication>false</DigestAuthentication>
-      <WindowsAuthentication>true</WindowsAuthentication>
-    </WebSite>-->
+      <WindowsAuthentication>false</WindowsAuthentication>
+    </WebSite>
   </ItemGroup>
 
   <ItemGroup>
