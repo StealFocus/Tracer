@@ -1,7 +1,25 @@
+Thread Static
+=============
 http://aabs.wordpress.com/2007/12/31/the-ambient-context-design-pattern-in-net/
 http://stackoverflow.com/questions/273301/callcontext-vs-threadstatic
 http://www.hanselman.com/blog/ATaleOfTwoTechniquesTheThreadStaticAttributeAndSystemWebHttpContextCurrentItems.aspx
 http://piers7.blogspot.com/2005/11/threadstatic-callcontext-and_02.html
 http://forum.springframework.net/showthread.php?t=572
 
+SQLite
+======
 http://devlicio.us/blogs/krzysztof_kozmic/archive/2009/08/14/testing-with-nhibernate-and-sqlite.aspx
+
+Log4Net
+=======
+http://logging.apache.org/log4net/release/faq.html
+
+Can the outputs of multiple client request go to different log files?
+Many developers are confronted with the problem of distinguishing the log output originating from the same class but different client requests. They come up with ingenious mechanisms to fan out the log output to different files. In most cases, this is not the right approach.
+It is simpler to use a context property or stack (ThreadContext). Typically, one would ThreadContext.Properties["ID"] = "XXX" client specific information, such as the client's hostname, ID or any other distinguishing information when starting to handle the client's request. Thereafter, log output will automatically include the context data so that you can distinguish logs from different client requests even if they are output to the same file.
+See the ThreadContext and the PatternLayout classes for more information.
+
+Can I write a custom appender?
+Yes. You can implement the log4net.Appender.IAppender interface to create you own customized appender. We recommend that you extend the log4net.Appender.AppenderSkeleton class rather than starting from scratch. You should implement your custom code in a assembly separate from the log4net assembly. To get started it is worth looking at the source of the log4net.Appender.TraceAppender as an example of the minimum amount of code required to get an appender working.
+To configure log4net to use your custom appender you need to specify the assembly qualified name of the appender type in the config file. For example:
+<appender name="..." type="MyNamespace.MyAppender, MyAssembly">

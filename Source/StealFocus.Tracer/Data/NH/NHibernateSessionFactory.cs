@@ -13,7 +13,7 @@ namespace StealFocus.Tracer.Data.NH
     using System.IO;
 
     using NHibernate;
-    using NHibernate.ByteCode.Castle;
+    
     using NHibernate.Cfg;
     using NHibernate.Connection;
     using NHibernate.Dialect;
@@ -44,7 +44,6 @@ namespace StealFocus.Tracer.Data.NH
                             { Environment.Dialect, typeof(SQLiteDialect).FullName },
                             { Environment.ConnectionProvider, typeof(DriverConnectionProvider).FullName },
                             { Environment.ConnectionString, "Data Source=StealFocus.Tracer.sqlLiteDB;Version=3;" },
-                            { Environment.ProxyFactoryFactoryClass, typeof(ProxyFactoryFactory).AssemblyQualifiedName },
                             { Environment.Hbm2ddlAuto, "create" },
                             { Environment.ShowSql, true.ToString() }
                         });

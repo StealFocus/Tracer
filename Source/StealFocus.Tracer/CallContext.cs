@@ -16,13 +16,15 @@ namespace StealFocus.Tracer
     {
         private static readonly Stack<CallContext> callContextStack = new Stack<CallContext>();
 
+        private string info;
+
         protected CallContext()
         {
         }
 
         private CallContext(string info)
         {
-            this.Info = info;
+            this.info = info;
             callContextStack.Push(this);
         }
 
@@ -46,7 +48,18 @@ namespace StealFocus.Tracer
 
         public virtual int Id { get; set; }
 
-        public virtual string Info { get; private set; }
+        public virtual string Info
+        {
+            get
+            {
+                return this.info;
+            }
+
+            protected set
+            {
+                this.info = value;
+            }
+        }
 
         public static CallContext Create(string info)
         {
