@@ -5,9 +5,9 @@
     [Serializable]
     public class TraceEvent
     {
-        public Guid CorrelationId { get; set; }
+        public Guid? CorrelationId { get; set; }
 
-        public Guid BatchId { get; set; }
+        public Guid? BatchId { get; set; }
 
         public string Source { get; set; }
 
