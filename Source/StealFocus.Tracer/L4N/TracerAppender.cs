@@ -74,7 +74,7 @@
                 return (Guid)ThreadContext.Properties[ThreadContextKey.CorrelationId];
             }
 
-            return null;
+            return Guid.NewGuid();
         }
 
         private static Guid? GetBatchId()
@@ -84,7 +84,7 @@
                 return (Guid)ThreadContext.Properties[ThreadContextKey.BatchId];
             }
 
-            return null;
+            return Guid.NewGuid();
         }
 
         private static TraceEvent BuildTraceEvent(LoggingEvent loggingEvent, Guid? correlationId, Guid? batchId, string source)
@@ -93,6 +93,7 @@
             traceEvent.BatchId = batchId;
             traceEvent.CorrelationId = correlationId;
             traceEvent.Exception = loggingEvent.ExceptionObject;
+            traceEvent.Id = Guid.NewGuid();
             traceEvent.Message = loggingEvent.RenderedMessage;
             traceEvent.Source = source;
             traceEvent.SourceCode = new SourceCode();
