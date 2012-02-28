@@ -35,9 +35,9 @@
             {
                 Guid? correlationId = GetCorrelationId();
                 Guid? batchId = GetBatchId();
-                SendTraceEventForLoggingEvent sendTraceEventForLoggingEvent = SendTraceEventForLogginEvent;
-                sendTraceEventForLoggingEvent.BeginInvoke(loggingEvent, correlationId, batchId, this.GetTracerHubUri(), this.GetSource(), Callback, null);
-                SendTraceEventForLogginEvent(loggingEvent, correlationId, batchId, this.GetTracerHubUri(), this.GetSource());
+                SendTraceEventForLoggingEvent sendTraceEventForLoggingEvent = SendTraceEventForLoggingEvent;
+                sendTraceEventForLoggingEvent.BeginInvoke(loggingEvent, correlationId, batchId, this.GetTracerHubUri(), this.GetSource(), SendTraceEventForLoggingEventCallback, null);
+                SendTraceEventForLoggingEvent(loggingEvent, correlationId, batchId, this.GetTracerHubUri(), this.GetSource());
             }
             catch (Exception e)
             {
@@ -49,7 +49,7 @@
             }
         }
 
-        private static void Callback(IAsyncResult ar)
+        private static void SendTraceEventForLoggingEventCallback(IAsyncResult ar)
         {
             AsyncResult result = (AsyncResult)ar;
             SendTraceEventForLoggingEvent sendTraceEventForLoggingEvent = (SendTraceEventForLoggingEvent)result.AsyncDelegate;
@@ -105,7 +105,7 @@
             return traceEvent;
         }
 
-        private static void SendTraceEventForLogginEvent(LoggingEvent loggingEvent, Guid? correlationId, Guid? batchId, Uri tracerHubUri, string source)
+        private static void SendTraceEventForLoggingEvent(LoggingEvent loggingEvent, Guid? correlationId, Guid? batchId, Uri tracerHubUri, string source)
         {
             TraceEvent traceEvent = BuildTraceEvent(loggingEvent, correlationId, batchId, source);
             HubConnection hubConnection = new HubConnection(tracerHubUri.AbsoluteUri);
