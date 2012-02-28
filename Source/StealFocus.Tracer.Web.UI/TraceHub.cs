@@ -1,6 +1,7 @@
 ﻿namespace StealFocus.Tracer.Web.UI
 {
     using System;
+    using System.Globalization;
 
     using SignalR.Hubs;
 
@@ -18,10 +19,20 @@
                 throw new ArgumentNullException("traceEvent");
             }
 
-            System.Diagnostics.Debug.WriteLine("TEST!!!!!!" + traceEvent.Message);
+            string diagnosticMessage;
+            if (traceEvent.CorrelationId == null)
+            {
+                diagnosticMessage = string.Format(CultureInfo.CurrentCulture, "Received Trace Event from Source '{0}'.", traceEvent.Source);   
+            }
+            else
+            {
+                diagnosticMessage = string.Format(CultureInfo.CurrentCulture, "Received Trace Event from Source '{0}' with Correlation ID of '{1}'.", traceEvent.Source, traceEvent.CorrelationId);
+            }
 
-            // Call the addMessage method on all clients
-            Clients.addMessage(traceEvent.Message);
+            System.Diagnostics.Debug.WriteLine(diagnosticMessage);
+
+            // Send Trace Event to all clients.
+            Clients.addTraceEvent(traceEvent);
         }
     }
 }

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "StealFocus - Tracer";
+}
+
+<script type="text/javascript" >
+    var traceHub;
+
+    $(function () {
+        traceHub = $.connection.traceHub;
+        traceHub.addTraceEvent = onAddTraceEvent;
+        $("#sendTraceEventButton").click(onSendTraceEvent);
+        $.connection.hub.start();
+    });
+
+    function onAddTraceEvent(traceEvent) {
+        // Add the message to the list
+        $('#traceEvents').append('<li>' + traceEvent.Source + ' - ' + traceEvent.Message + '</li>');
+    }
+
+    function onSendTraceEvent() {
+        var source = $('#source').val();
+        var message = $('#message').val();
+        var traceEvent = jQuery.parseJSON('{"Source":"' + source + '", "Message":"' + message + '"}');
+        traceHub.send(traceEvent);
+    }
+</script>
+
+<h2>@ViewBag.Title</h2>
+
+<form id="form1" runat="server">
+    <div>
+        Source: <input type="text" id="source" /><br />
+        Message: <input type="text" id="message" /><br />
+        <input type="button" id="sendTraceEventButton" value="Test" />
+    </div>
+</form>
+
+<div>
+    <ul id="traceEvents"></ul>
+</div>
