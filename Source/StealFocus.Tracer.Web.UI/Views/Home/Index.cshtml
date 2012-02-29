@@ -97,8 +97,9 @@
                 + '", "BatchId":"' + batchId
                 + '", "Timestamp":"' + timestamp
                 + '", "Source":"' + source
-                + '", "UserName":"' + userName 
-                + '", "Message":"' + message + '"}');
+                + '", "UserName":"' + userName
+                + '", "Message":"' + message 
+                + '"}');
         }
 
         function onSendTraceEvent() {
@@ -116,9 +117,9 @@
         Correlation ID: <input type="text" id="correlationId" value="18fc923b-57b8-48af-938c-393b2dd54d9a" /><br />
         Batch ID: <input type="text" id="batchId" value="99fc923b-57b8-48af-938c-393b2dd54d2a" /><br />
         Timestamp: <input type="text" id="timestamp" value="2012-02-29T08:00:00" /><br />
-        Source: <input type="text" id="source" /><br />
-        User Name: <input type="text" id="userName" /><br />
-        Message: <input type="text" id="message" /><br />
+        Source: <input type="text" id="source" value="MySouce" /><br />
+        User Name: <input type="text" id="userName" value="User Name" /><br />
+        Message: <input type="text" id="message" value="My message." /><br />
         <input type="button" id="sendTraceEventButton" value="Test" />
     </div>
 </form>
