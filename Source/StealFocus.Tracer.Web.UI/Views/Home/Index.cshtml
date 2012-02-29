@@ -29,12 +29,24 @@
 
     function createNewThread(correlationId) {
         var threadMarkup = '<div id="correlationId-' + correlationId + '" />';
-        $('#traceEvents').append(threadMarkup);
+        var traceEventsDiv = $('#traceEvents');
+        if (traceEventsDiv.children().length > 0) {
+            traceEventsDiv.prepend(threadMarkup);
+        }
+        else {
+            traceEventsDiv.append(threadMarkup);
+        }
     }
 
     function createNewBatch(correlationId, batchId) {
         var batchMarkup = '<div id="batchId-' + batchId + '" />';
-        $('#correlationId-' + correlationId).append(batchMarkup);
+        var correlationIdDiv = $('#correlationId-' + correlationId);
+        if (correlationIdDiv.children().length > 0) {
+            correlationIdDiv.prepend(batchMarkup);
+        }
+        else {
+            correlationIdDiv.append(batchMarkup);
+        }
     }
 
     function padDateTimeComponent(value) {
@@ -45,11 +57,22 @@
         return value;
     }
 
+    function padDateTimeMillisecondComponent(value) {
+        value = value + "";
+        if (value.length == 1) {
+            value = "00" + value;
+        }
+        if (value.length == 2) {
+            value = "0" + value;
+        }
+        return value;
+    }
+
     function getDateTimeString(dateTime) {
         var parsedDate = new Date(parseInt(dateTime.substr(6)));
         var d = new Date(parsedDate);
         var year = d.getFullYear();
-        var month = d.getMonth();
+        var month = d.getMonth() + 1; // Month is zero based.
         month = padDateTimeComponent(month);
         var day = d.getDate();
         day = padDateTimeComponent(day);
@@ -60,12 +83,13 @@
         var seconds = d.getSeconds();
         seconds = padDateTimeComponent(seconds);
         var milliseconds = d.getMilliseconds();
-        milliseconds = padDateTimeComponent(milliseconds);
-        return year + "/" + month + "/" + day + " " + hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
+        milliseconds = padDateTimeMillisecondComponent(milliseconds);
+        return year + "/" + month + "/" + day + " " + hours + ":" + minutes + ":" + seconds + "." + milliseconds;
     }
 
     function getMarkupForTraceEvent(traceEvent) {
-        return '<div id="traceId-' + traceEvent.Id + '">' + getDateTimeString(traceEvent.Timestamp) + ' - ' + traceEvent.Source + ' - ' + traceEvent.UserName + ' - ' + traceEvent.Message + '</div>';
+        var timestamp = getDateTimeString(traceEvent.Timestamp);
+        return '<div id="traceId-' + traceEvent.Id + '">' + timestamp + ' - ' + traceEvent.Source + ' - ' + traceEvent.UserName + ' - ' + traceEvent.Message + '</div>';
     }
 
     function onAddTraceEvent(traceEvent) {
@@ -78,17 +102,40 @@
             createNewBatch(traceEvent.CorrelationId, traceEvent.BatchId);
         }
         var markupForTraceEvent = getMarkupForTraceEvent(traceEvent);
-        $('#batchId-' + traceEvent.BatchId).append(markupForTraceEvent);
+        var batchIdDiv = $('#batchId-' + traceEvent.BatchId);
+        if ( batchIdDiv.children().length > 0 ) {
+            batchIdDiv.prepend(markupForTraceEvent);
+        }
+        else {
+            batchIdDiv.append(markupForTraceEvent);
+        }
     }
 </script>
 @if (HttpContext.Current.Request.IsLocal)
 {
     <script type="text/javascript" >
+        function getFormattedDate(d) {
+            var year = d.getFullYear();
+            var month = d.getMonth() + 1; // Month is zero based.
+            month = padDateTimeComponent(month);
+            var day = d.getDate();
+            day = padDateTimeComponent(day);
+            var hours = d.getHours();
+            hours = padDateTimeComponent(hours);
+            var minutes = d.getMinutes();
+            minutes = padDateTimeComponent(minutes);
+            var seconds = d.getSeconds();
+            seconds = padDateTimeComponent(seconds);
+            var milliseconds = d.getMilliseconds();
+            milliseconds = padDateTimeMillisecondComponent(milliseconds);
+            return year + "-" + month + "-" + day + "T" + hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+        }
+
         function getTraceEvent() {
             var id = $('#id').val();
             var correlationId = $('#correlationId').val();
             var batchId = $('#batchId').val();
-            var timestamp = $('#timestamp').val();
+            var timestamp = getFormattedDate(new Date());
             var source = $('#source').val();
             var userName = $('#userName').val();
             var message = $('#message').val();
@@ -98,7 +145,7 @@
                 + '", "Timestamp":"' + timestamp
                 + '", "Source":"' + source
                 + '", "UserName":"' + userName
-                + '", "Message":"' + message 
+                + '", "Message":"' + message
                 + '"}');
         }
 
@@ -116,7 +163,7 @@
         ID: <input type="text" id="id" value="78fc923b-57b8-48af-938c-393b2dd54d9a" /><br />
         Correlation ID: <input type="text" id="correlationId" value="18fc923b-57b8-48af-938c-393b2dd54d9a" /><br />
         Batch ID: <input type="text" id="batchId" value="99fc923b-57b8-48af-938c-393b2dd54d2a" /><br />
-        Timestamp: <input type="text" id="timestamp" value="2012-02-29T08:00:00" /><br />
+        @*Timestamp: <input type="text" id="timestamp" value="2012-02-29T08:00:00" /><br />*@
         Source: <input type="text" id="source" value="MySouce" /><br />
         User Name: <input type="text" id="userName" value="User Name" /><br />
         Message: <input type="text" id="message" value="My message." /><br />
