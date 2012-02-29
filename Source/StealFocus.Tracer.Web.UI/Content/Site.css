@@ -73,3 +73,19 @@ textarea
 {
     display: none;
 }
+
+
+/* Custom
+-----------------------------------------------------------*/
+
+#sources div
+{
+    float: left;
+    width: 200px;
+}
+
+#traceEvents div
+{
+    float: left;
+    width: 400px;
+}

@@ -10,6 +10,20 @@
         $("#sendTraceEventButton").click(onSendTraceEvent);
         $.connection.hub.start();
     });
+
+    function getSourceIsRegistered(source) {
+        var existingSourceDiv = $('#source-' + source);
+        if (existingSourceDiv.length > 0) {
+            return true;
+        }
+        return false;
+    }
+    
+    function createNewSource(source) {
+        var sourceMarkup = '<div id="source-' + source + '">' + source + '</div>';
+        var sourcesDiv = $('#sources');
+        sourcesDiv.append(sourceMarkup);
+    }
     
     function getTraceEventHasGotAnExistingThread(correlationId) {
         var existingThreadDiv = $('#correlationId-' + correlationId);
@@ -93,6 +107,10 @@
     }
 
     function onAddTraceEvent(traceEvent) {
+        var sourceIsRegistered = getSourceIsRegistered(traceEvent.Source);
+        if (!sourceIsRegistered) {
+            createNewSource(traceEvent.Source);
+        }
         var traceEventHasGotAnExistingThread = getTraceEventHasGotAnExistingThread(traceEvent.CorrelationId);
         if (!traceEventHasGotAnExistingThread) {
             createNewThread(traceEvent.CorrelationId);
@@ -172,5 +190,7 @@
 </form>
 <br />
 }
+<div id="sources">
+</div>
 <div id="traceEvents">
 </div>
