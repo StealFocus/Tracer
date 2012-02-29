@@ -12,7 +12,7 @@
     });
     
     function getTraceEventHasGotAnExistingThread(correlationId) {
-        var existingThreadDiv = $('#' + correlationId);
+        var existingThreadDiv = $('#correlationId-' + correlationId);
         if (existingThreadDiv.length > 0) {
             return true;
         }
@@ -20,7 +20,7 @@
     }
 
     function getTraceEventHasGotAnExistingBatch(batchId) {
-        var existingBatchDiv = $('#' + batchId);
+        var existingBatchDiv = $('#batchId-' + batchId);
         if (existingBatchDiv.length > 0) {
             return true;
         }
@@ -28,17 +28,44 @@
     }
 
     function createNewThread(correlationId) {
-        var threadMarkup = '<div id="' + correlationId + '" />';
+        var threadMarkup = '<div id="correlationId-' + correlationId + '" />';
         $('#traceEvents').append(threadMarkup);
     }
 
     function createNewBatch(correlationId, batchId) {
-        var batchMarkup = '<div id="' + batchId + '" />';
-        $('#' + correlationId).append(batchMarkup);
+        var batchMarkup = '<div id="batchId-' + batchId + '" />';
+        $('#correlationId-' + correlationId).append(batchMarkup);
+    }
+
+    function padDateTimeComponent(value) {
+        value = value + "";
+        if (value.length == 1) {
+            value = "0" + value;
+        }
+        return value;
+    }
+
+    function getDateTimeString(dateTime) {
+        var parsedDate = new Date(parseInt(dateTime.substr(6)));
+        var d = new Date(parsedDate);
+        var year = d.getFullYear();
+        var month = d.getMonth();
+        month = padDateTimeComponent(month);
+        var day = d.getDate();
+        day = padDateTimeComponent(day);
+        var hours = d.getHours();
+        hours = padDateTimeComponent(hours);
+        var minutes = d.getMinutes();
+        minutes = padDateTimeComponent(minutes);
+        var seconds = d.getSeconds();
+        seconds = padDateTimeComponent(seconds);
+        var milliseconds = d.getMilliseconds();
+        milliseconds = padDateTimeComponent(milliseconds);
+        return year + "/" + month + "/" + day + " " + hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
     }
 
     function getMarkupForTraceEvent(traceEvent) {
-        return '<div id="' + traceEvent.Id + '">' + traceEvent.Source + ' - ' + traceEvent.Message + '</div>';
+        return '<div id="traceId-' + traceEvent.Id + '">' + getDateTimeString(traceEvent.Timestamp) + ' - ' + traceEvent.Source + ' - ' + traceEvent.UserName + ' - ' + traceEvent.Message + '</div>';
     }
 
     function onAddTraceEvent(traceEvent) {
@@ -51,7 +78,7 @@
             createNewBatch(traceEvent.CorrelationId, traceEvent.BatchId);
         }
         var markupForTraceEvent = getMarkupForTraceEvent(traceEvent);
-        $('#' + traceEvent.BatchId).append(markupForTraceEvent);
+        $('#batchId-' + traceEvent.BatchId).append(markupForTraceEvent);
     }
 </script>
 @if (HttpContext.Current.Request.IsLocal)
@@ -61,9 +88,17 @@
             var id = $('#id').val();
             var correlationId = $('#correlationId').val();
             var batchId = $('#batchId').val();
+            var timestamp = $('#timestamp').val();
             var source = $('#source').val();
+            var userName = $('#userName').val();
             var message = $('#message').val();
-            return jQuery.parseJSON('{"Id":"' + id + '", "CorrelationId":"' + correlationId + '", "BatchId":"' + batchId + '", "Source":"' + source + '", "Message":"' + message + '"}');
+            return jQuery.parseJSON('{"Id":"' + id
+                + '", "CorrelationId":"' + correlationId
+                + '", "BatchId":"' + batchId
+                + '", "Timestamp":"' + timestamp
+                + '", "Source":"' + source
+                + '", "UserName":"' + userName 
+                + '", "Message":"' + message + '"}');
         }
 
         function onSendTraceEvent() {
@@ -80,7 +115,9 @@
         ID: <input type="text" id="id" value="78fc923b-57b8-48af-938c-393b2dd54d9a" /><br />
         Correlation ID: <input type="text" id="correlationId" value="18fc923b-57b8-48af-938c-393b2dd54d9a" /><br />
         Batch ID: <input type="text" id="batchId" value="99fc923b-57b8-48af-938c-393b2dd54d2a" /><br />
+        Timestamp: <input type="text" id="timestamp" value="2012-02-29T08:00:00" /><br />
         Source: <input type="text" id="source" /><br />
+        User Name: <input type="text" id="userName" /><br />
         Message: <input type="text" id="message" /><br />
         <input type="button" id="sendTraceEventButton" value="Test" />
     </div>
