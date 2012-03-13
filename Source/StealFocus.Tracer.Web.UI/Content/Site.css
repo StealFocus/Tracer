@@ -78,14 +78,14 @@ textarea
 /* Custom
 -----------------------------------------------------------*/
 
-#sources div
+#sourcesContent
 {
     float: left;
     width: 200px;
 }
 
-#traceEvents div
+#traceEventsContent
 {
     float: left;
-    width: 400px;
+    width: 600px;
 }

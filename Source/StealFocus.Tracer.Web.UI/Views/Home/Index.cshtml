@@ -173,7 +173,7 @@
         }
     </script>
 }
-<h2>@ViewBag.Title</h2>
+<h1>@ViewBag.Title</h1>
 @if (HttpContext.Current.Request.IsLocal)
 {
 <form id="form1" runat="server">
@@ -190,7 +190,15 @@
 </form>
 <br />
 }
-<div id="sources">
-</div>
-<div id="traceEvents">
+<div id="content">
+    <div id="sourcesContent">
+        <h2>Sources</h2>
+        <div id="sources">
+        </div>
+    </div>
+    <div id="traceEventsContent">
+        <h2>Trace Events</h2>
+        <div id="traceEvents">
+        </div>
+    </div>
 </div>
