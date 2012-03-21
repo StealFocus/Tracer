@@ -49,6 +49,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StealFocus.Tracer.Web.UI", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StealFocus.Tracer.Web.UI.Tests", "StealFocus.Tracer.Web.UI.Tests\StealFocus.Tracer.Web.UI.Tests.csproj", "{C1D167AE-30E1-4684-9BDE-793C45991935}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Artefacts", "Artefacts", "{0991605E-9E75-4B0E-822E-C99DF7FF4CBF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{09EFB8C5-4F61-4BB5-A47B-2310FC1F3ADE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StealFocus.Tracer", "StealFocus.Tracer", "{88F9FB78-8AB8-4EE3-AB2A-83EF480805C6}"
+	ProjectSection(SolutionItems) = preProject
+		Artefacts\NuGet\StealFocus.Tracer\StealFocus.Tracer.nuspec = Artefacts\NuGet\StealFocus.Tracer\StealFocus.Tracer.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{6540E725-6DD7-4E87-A087-2630A0FB33AF}"
+	ProjectSection(SolutionItems) = preProject
+		Artefacts\NuGet\StealFocus.Tracer\content\app.config.transform = Artefacts\NuGet\StealFocus.Tracer\content\app.config.transform
+		Artefacts\NuGet\StealFocus.Tracer\content\appSettings.config.transform = Artefacts\NuGet\StealFocus.Tracer\content\appSettings.config.transform
+		Artefacts\NuGet\StealFocus.Tracer\content\log4net.config.transform = Artefacts\NuGet\StealFocus.Tracer\content\log4net.config.transform
+		Artefacts\NuGet\StealFocus.Tracer\content\web.config.transform = Artefacts\NuGet\StealFocus.Tracer\content\web.config.transform
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = StealFocus.Tracer.vsmdi
@@ -81,5 +98,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{550FC319-7D51-4812-BDAD-5E66D96EADB6} = {C5EC0BC5-1E0D-4CFE-A084-AD9357BEB0A3}
 		{C1D167AE-30E1-4684-9BDE-793C45991935} = {C5EC0BC5-1E0D-4CFE-A084-AD9357BEB0A3}
+		{09EFB8C5-4F61-4BB5-A47B-2310FC1F3ADE} = {0991605E-9E75-4B0E-822E-C99DF7FF4CBF}
+		{88F9FB78-8AB8-4EE3-AB2A-83EF480805C6} = {09EFB8C5-4F61-4BB5-A47B-2310FC1F3ADE}
+		{6540E725-6DD7-4E87-A087-2630A0FB33AF} = {88F9FB78-8AB8-4EE3-AB2A-83EF480805C6}
 	EndGlobalSection
 EndGlobal

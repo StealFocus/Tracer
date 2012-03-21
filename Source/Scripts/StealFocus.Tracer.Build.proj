@@ -281,8 +281,30 @@
     <!-- Enter your custom steps here. -->
   </Target>
 
+  <Target Name="CreateNuGetPackages">
+    <!-- Create NuGet Packages - Copy files -->
+    <ItemGroup>
+      <StlFcsLibFiles Include="$(BuildDirectoryPath)\Release\StealFocus.Tracer.dll" />
+      <StlFcsLibFiles Include="$(BuildDirectoryPath)\Release\StealFocus.Tracer.pdb" />
+    </ItemGroup>
+    <Copy
+      SourceFiles="@(StlFcsLibFiles)"
+      DestinationFolder="..\Artefacts\NuGet\StealFocus.Tracer\lib\net40-Client" />
+    <Copy
+      SourceFiles="@(StlFcsLibFiles)"
+      DestinationFolder="..\Artefacts\NuGet\StealFocus.Tracer\lib\net40-Full" />
+    <!-- Create NuGet Packages - Create package -->
+    <Exec
+      Command="..\.nuget\NuGet.exe pack StealFocus.Tracer.nuspec -Version $(VersionNumber)"
+      WorkingDirectory="..\Artefacts\NuGet\StealFocus.Tracer" />
+    <!-- Create NuGet Packages - Clean-up -->
+    <RemoveDir
+      Directories="..\Artefacts\NuGet\StealFocus.Tracer\lib" />
+  </Target>
+
   <Target Name="AfterPackageCustom">
     <!-- Enter your custom steps here. -->
+    <CallTarget Targets="CreateNuGetPackages" />
   </Target>
 
   <Target Name="BeforeBuildDocumentationCustom">
@@ -299,6 +321,23 @@
 
   <Target Name="AfterDropBuildCustom">
     <!-- Enter your custom steps here. -->
+    <ItemGroup Condition=" '$(IsDesktopBuild)'!='true' ">
+      <NuGetPackages Include="..\Artefacts\NuGet\StealFocus.Tracer\*.nupkg" />
+    </ItemGroup>
+    <Copy
+      Condition=" '$(IsDesktopBuild)'!='true' "
+      SourceFiles="@(NuGetPackages)"
+      DestinationFolder="$(DropLocationForBuild)" />
+    <!-- Copy Trunk build to StealFocus NuGet feed. -->
+    <Copy
+      Condition=" '$(IsDesktopBuild)'!='true' And '$(BranchName)'=='Master' "
+      SourceFiles="@(NuGetPackages)"
+      DestinationFolder="\\IP-0A3AE60A\NuGetPackages\" />
+    <!-- Push non-Trunk builds to NuGet.org feed -->
+    <Exec
+      Condition=" '$(IsDesktopBuild)'!='true' And '$(BranchName)'!='Master' "
+      Command='..\.nuget\NuGet.exe Push "%(NuGetPackages.FullPath)"'
+      WorkingDirectory="..\Artefacts\NuGet\StealFocus.Tracer" />
   </Target>
 
   <!-- Only called if "IsEnvironmentDeployBuild" property is set to "true". -->
