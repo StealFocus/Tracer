@@ -336,7 +336,7 @@
     <!-- Push non-Trunk builds to NuGet.org feed -->
     <Exec
       Condition=" '$(IsDesktopBuild)'!='true' And '$(BranchName)'!='Master' "
-      Command='..\.nuget\NuGet.exe Push "%(NuGetPackages.FullPath)"'
+      Command='..\..\..\.nuget\NuGet.exe Push "%(NuGetPackages.FullPath)"'
       WorkingDirectory="..\Artefacts\NuGet\StealFocus.Tracer" />
   </Target>
 
