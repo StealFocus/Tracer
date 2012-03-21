@@ -295,7 +295,7 @@
       DestinationFolder="..\Artefacts\NuGet\StealFocus.Tracer\lib\net40-Full" />
     <!-- Create NuGet Packages - Create package -->
     <Exec
-      Command="..\.nuget\NuGet.exe pack StealFocus.Tracer.nuspec -Version $(VersionNumber)"
+      Command="..\..\..\.nuget\NuGet.exe pack StealFocus.Tracer.nuspec -Version $(VersionNumber)"
       WorkingDirectory="..\Artefacts\NuGet\StealFocus.Tracer" />
     <!-- Create NuGet Packages - Clean-up -->
     <RemoveDir
