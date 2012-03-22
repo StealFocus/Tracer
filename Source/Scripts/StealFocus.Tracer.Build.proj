@@ -304,7 +304,36 @@
 
   <Target Name="AfterPackageCustom">
     <!-- Enter your custom steps here. -->
+    <!-- Create NuGet Packages. -->
     <CallTarget Targets="CreateNuGetPackages" />
+    <!-- Zip (Debug) -->
+    <ItemGroup>
+      <DebugStealFocusTracerWebUIZipFiles Include="$(BuildDirectoryPath)\Debug\_PublishedWebsites\StealFocus.Tracer.Web.UI\**\*" />
+      <DebugStealFocusTracerWebUIPackageZipFiles Include="$(BuildDirectoryPath)\Debug\_PublishedWebsites\StealFocus.Tracer.Web.UI_Package\**\*" />
+    </ItemGroup>
+    <MSBuild.ExtensionPack.Compression.Zip
+      TaskAction="Create"
+      CompressFiles="@(DebugStealFocusTracerWebUIZipFiles)"
+      ZipFileName="$(BuildDirectoryPath)\Debug\_PublishedWebsites\StealFocus.Tracer.Web.UI.zip" />
+    <MSBuild.ExtensionPack.Compression.Zip
+      TaskAction="Create"
+      CompressFiles="@(DebugStealFocusTracerWebUIPackageZipFiles)"
+      ZipFileName="$(BuildDirectoryPath)\Debug\_PublishedWebsites\StealFocus.Tracer.Web.UI_Package.zip" />
+    <!-- Zip (Release) -->
+    <ItemGroup Condition=" '$(IsAllConfigurationsBuild)'=='true' ">
+      <ReleaseStealFocusTracerWebUIZipFiles Include="$(BuildDirectoryPath)\Release\_PublishedWebsites\StealFocus.Tracer.Web.UI\**\*" />
+      <ReleaseStealFocusTracerWebUIPackageZipFiles Include="$(BuildDirectoryPath)\Release\_PublishedWebsites\StealFocus.Tracer.Web.UI_Package\**\*" />
+    </ItemGroup>
+    <MSBuild.ExtensionPack.Compression.Zip
+      Condition=" '$(IsAllConfigurationsBuild)'=='true' "
+      TaskAction="Create"
+      CompressFiles="@(ReleaseStealFocusTracerWebUIZipFiles)"
+      ZipFileName="$(BuildDirectoryPath)\Release\_PublishedWebsites\StealFocus.Tracer.Web.UI.zip" />
+    <MSBuild.ExtensionPack.Compression.Zip
+      Condition=" '$(IsAllConfigurationsBuild)'=='true' "
+      TaskAction="Create"
+      CompressFiles="@(ReleaseStealFocusTracerWebUIPackageZipFiles)"
+      ZipFileName="$(BuildDirectoryPath)\Release\_PublishedWebsites\StealFocus.Tracer.Web.UI_Package.zip" />
   </Target>
 
   <Target Name="BeforeBuildDocumentationCustom">
