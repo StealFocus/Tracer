@@ -93,6 +93,7 @@
             traceEvent.BatchId = batchId;
             traceEvent.CorrelationId = correlationId;
             traceEvent.Exception = loggingEvent.ExceptionObject;
+            traceEvent.HostName = Environment.MachineName;
             traceEvent.Id = Guid.NewGuid();
             traceEvent.Message = loggingEvent.RenderedMessage;
             traceEvent.Source = source;
