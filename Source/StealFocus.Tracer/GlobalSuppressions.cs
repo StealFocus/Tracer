@@ -23,3 +23,4 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1056:UriPropertiesShouldNotBeStrings", Scope = "member", Target = "StealFocus.Tracer.L4N.TracerAppender.#TracerHubUrl")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "tracerHubUrl", Scope = "member", Target = "StealFocus.Tracer.L4N.TracerAppender.#GetTracerHubUri()")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "tracerSourceName", Scope = "member", Target = "StealFocus.Tracer.L4N.TracerAppender.#GetSource()")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "StealFocus.Tracer.L4N.TracerAppender.#SendTraceEventForLoggingEventCallback(System.IAsyncResult)")]

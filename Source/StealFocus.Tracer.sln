@@ -62,7 +62,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{6540
 	ProjectSection(SolutionItems) = preProject
 		Artefacts\NuGet\StealFocus.Tracer\content\app.config.transform = Artefacts\NuGet\StealFocus.Tracer\content\app.config.transform
 		Artefacts\NuGet\StealFocus.Tracer\content\appSettings.config.transform = Artefacts\NuGet\StealFocus.Tracer\content\appSettings.config.transform
-		Artefacts\NuGet\StealFocus.Tracer\content\log4net.config.transform = Artefacts\NuGet\StealFocus.Tracer\content\log4net.config.transform
 		Artefacts\NuGet\StealFocus.Tracer\content\web.config.transform = Artefacts\NuGet\StealFocus.Tracer\content\web.config.transform
 	EndProjectSection
 EndProject

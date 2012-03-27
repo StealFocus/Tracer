@@ -5,6 +5,8 @@
     <DeploymentItem filename="..\Library\System.Data.SQLite.dll" />
     <DeploymentItem filename="..\Library\sqlite3.dll" />
     <DeploymentItem filename="StealFocus.Tracer.Tests\nhibernate.config" />
+    <DeploymentItem filename="StealFocus.Tracer.Tests\appSettings.config" />
+    <DeploymentItem filename="StealFocus.Tracer.Tests\log4net.config" />
   </Deployment>
   <Execution>
     <TestTypeSpecific>

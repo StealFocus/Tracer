@@ -20,6 +20,12 @@
 
         private const string TracerHubMethodName = "Send";
 
+        private static readonly object SyncRoot = new object();
+
+        private static HubConnection hubConnection;
+
+        private static IHubProxy hubProxy;
+
         public string TracerHubUrl { get; set; }
 
         public string TracerSourceName { get; set; }
@@ -35,8 +41,12 @@
             {
                 Guid? correlationId = GetCorrelationId();
                 Guid? batchId = GetBatchId();
-                SendTraceEventForLoggingEvent sendTraceEventForLoggingEvent = SendTraceEventForLoggingEvent;
-                sendTraceEventForLoggingEvent.BeginInvoke(loggingEvent, correlationId, batchId, this.GetTracerHubUri(), this.GetSource(), SendTraceEventForLoggingEventCallback, null);
+
+                //// Problems with calling SignalR asynchronously, need to work out why use async to release thread for caller.
+                //// SendTraceEventForLoggingEvent sendTraceEventForLoggingEvent = SendTraceEventForLoggingEvent;
+                //// sendTraceEventForLoggingEvent.BeginInvoke(loggingEvent, correlationId, batchId, this.GetTracerHubUri(), this.GetSource(), SendTraceEventForLoggingEventCallback, null);
+
+                // Calling SignalR synchronously (this is bad), until above problem is resolved.
                 SendTraceEventForLoggingEvent(loggingEvent, correlationId, batchId, this.GetTracerHubUri(), this.GetSource());
             }
             catch (Exception e)
@@ -87,6 +97,19 @@
             return Guid.NewGuid();
         }
 
+        private static void EnsureHubProxyIsInitialised(Uri tracerHubUri)
+        {
+            lock (SyncRoot)
+            {
+                if (hubProxy == null)
+                {
+                    hubConnection = new HubConnection(tracerHubUri.AbsoluteUri);
+                    hubProxy = hubConnection.CreateProxy(TacerHubName);
+                    hubConnection.Start().Wait();
+                }
+            }
+        }
+
         private static TraceEvent BuildTraceEvent(LoggingEvent loggingEvent, Guid? correlationId, Guid? batchId, string source)
         {
             TraceEvent traceEvent = new TraceEvent();
@@ -109,11 +132,9 @@
 
         private static void SendTraceEventForLoggingEvent(LoggingEvent loggingEvent, Guid? correlationId, Guid? batchId, Uri tracerHubUri, string source)
         {
+            EnsureHubProxyIsInitialised(tracerHubUri);
             TraceEvent traceEvent = BuildTraceEvent(loggingEvent, correlationId, batchId, source);
-            HubConnection hubConnection = new HubConnection(tracerHubUri.AbsoluteUri);
-            IHubProxy hubProxy = hubConnection.CreateProxy(TacerHubName);
-            hubConnection.Start().Wait();
-            hubProxy.Invoke(TracerHubMethodName, traceEvent);
+            hubProxy.Invoke(TracerHubMethodName, traceEvent).Wait();
         }
 
         private string GetSource()
