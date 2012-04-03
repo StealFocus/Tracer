@@ -128,53 +128,49 @@
             batchIdDiv.append(markupForTraceEvent);
         }
     }
+    
+    function getFormattedDate(d) {
+        var year = d.getFullYear();
+        var month = d.getMonth() + 1; // Month is zero based.
+        month = padDateTimeComponent(month);
+        var day = d.getDate();
+        day = padDateTimeComponent(day);
+        var hours = d.getHours();
+        hours = padDateTimeComponent(hours);
+        var minutes = d.getMinutes();
+        minutes = padDateTimeComponent(minutes);
+        var seconds = d.getSeconds();
+        seconds = padDateTimeComponent(seconds);
+        var milliseconds = d.getMilliseconds();
+        milliseconds = padDateTimeMillisecondComponent(milliseconds);
+        return year + "-" + month + "-" + day + "T" + hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+    }
+
+    function getTraceEvent() {
+        var id = $('#id').val();
+        var correlationId = $('#correlationId').val();
+        var batchId = $('#batchId').val();
+        var timestamp = getFormattedDate(new Date());
+        var source = $('#source').val();
+        var hostName = $('#hostName').val();
+        var userName = $('#userName').val();
+        var message = $('#message').val();
+        return jQuery.parseJSON('{"Id":"' + id
+            + '", "CorrelationId":"' + correlationId
+            + '", "BatchId":"' + batchId
+            + '", "Timestamp":"' + timestamp
+            + '", "Source":"' + source
+            + '", "HostName":"' + hostName
+            + '", "UserName":"' + userName
+            + '", "Message":"' + message
+            + '"}');
+    }
+
+    function onSendTraceEvent() {
+        var traceEvent = getTraceEvent();
+        traceHub.send(traceEvent);
+    }
 </script>
-@if (HttpContext.Current.Request.IsLocal)
-{
-    <script type="text/javascript" >
-        function getFormattedDate(d) {
-            var year = d.getFullYear();
-            var month = d.getMonth() + 1; // Month is zero based.
-            month = padDateTimeComponent(month);
-            var day = d.getDate();
-            day = padDateTimeComponent(day);
-            var hours = d.getHours();
-            hours = padDateTimeComponent(hours);
-            var minutes = d.getMinutes();
-            minutes = padDateTimeComponent(minutes);
-            var seconds = d.getSeconds();
-            seconds = padDateTimeComponent(seconds);
-            var milliseconds = d.getMilliseconds();
-            milliseconds = padDateTimeMillisecondComponent(milliseconds);
-            return year + "-" + month + "-" + day + "T" + hours + ":" + minutes + ":" + seconds + "." + milliseconds;
-        }
-
-        function getTraceEvent() {
-            var id = $('#id').val();
-            var correlationId = $('#correlationId').val();
-            var batchId = $('#batchId').val();
-            var timestamp = getFormattedDate(new Date());
-            var source = $('#source').val();
-            var hostName = $('#hostName').val();
-            var userName = $('#userName').val();
-            var message = $('#message').val();
-            return jQuery.parseJSON('{"Id":"' + id
-                + '", "CorrelationId":"' + correlationId
-                + '", "BatchId":"' + batchId
-                + '", "Timestamp":"' + timestamp
-                + '", "Source":"' + source
-                + '", "HostName":"' + hostName
-                + '", "UserName":"' + userName
-                + '", "Message":"' + message
-                + '"}');
-        }
-
-        function onSendTraceEvent() {
-            var traceEvent = getTraceEvent();
-            traceHub.send(traceEvent);
-        }
-    </script>
-}
 <h1>@ViewBag.Title</h1>
 @if (HttpContext.Current.Request.IsLocal)
 {
